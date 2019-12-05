@@ -23,18 +23,25 @@ const drawTodos = () => {
   ul.innerHTML = "";
   for (const key in todos) {
     let li = document.createElement("li");
-    li.id = key;
-    const doneClass = todos[key].done && "done";
+    const doneClass = todos[key].done ? "done" : "";
     li.innerHTML = `
-        <span class="${doneClass}">${todos[key].text}</span>
-        <span id="${key}">X</span>
+        <span id="${key}" class="${doneClass}">${todos[key].text}</span>
+        <span data-id="${key}" data-action="delete">X</span>
     `;
+    setListeners(li);
     ul.appendChild(li);
   }
 };
 
 const setListeners = li => {
   li.addEventListener("click", e => {
+    console.log(e.target);
+    if (e.target.getAttribute("data-action") === "delete") {
+      const key = e.target.getAttribute("data-id");
+      delete todos[key];
+      drawTodos();
+      return;
+    }
     const key = e.target.id;
     todos[key].done = !todos[key].done;
     drawTodos();
