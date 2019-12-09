@@ -9,7 +9,8 @@
   </head>
   <body>
     <div id="root">
-      <input placeholder="Agrega cosas por hacer" type="text" />
+      <!-- Primera lista -->
+      <input id="todo-input" placeholder="Agrega cosas por hacer" type="text" />
       <ul>
         <li>
           <span>Cenar</span>
@@ -21,6 +22,15 @@
         </li>
         <li>
           <span>Leer</span>
+          <span>X</span>
+        </li>
+      </ul>
+
+      <!-- Segunda lista -->
+      <input type="email" placeholder="Agrega un correo" id="addEmail" />
+      <ul id="emails">
+        <li>
+          <span>bliss@gmail.com</span>
           <span>X</span>
         </li>
       </ul>
